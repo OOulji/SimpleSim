@@ -10,7 +10,7 @@ class CelestialObject():
         self.inital_velocity = initial_velocity
         self.name = name
     
-    def update_position(self, new_position) -> None:
+    def update_position(self, new_position:np.array) -> None:
         self.position = new_position
 
 
