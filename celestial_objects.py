@@ -1,16 +1,26 @@
-
 import numpy as np
 
-class CelestialObject():
 
-    def __init__(self, initial_position:np.array, name:str, mass:float, initial_velocity:np.array) -> None:
+
+class CelestialObject:
+    def __init__(
+        self,
+        initial_position: np.array,
+        name: str,
+        mass: float,
+        initial_velocity: np.array,
+    ) -> None:
 
         self.mass = mass
         self.position = initial_position
         self.inital_velocity = initial_velocity
         self.name = name
-    
-    def update_position(self, new_position:np.array) -> None:
+
+    def update_position(self, new_position: np.array) -> None:
         self.position = new_position
-
-
+    
+    def get_mass(self) -> float:
+        return self.mass
+    
+    def get_position(self) -> np.array:
+        return self.position
