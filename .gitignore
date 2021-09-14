@@ -1,1 +1,3 @@
 simple_sim.code-workspace
+/__pycache__
+/dependencies/__pycache__
