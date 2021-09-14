@@ -15,6 +15,7 @@ class EulerIntegrator(Integrator):
         result = np.zeros(initial_vector.shape)
 
         for idx, dimension in enumerate(initial_vector):
-            result[idx] = dimension + time_step * function(time, dimension)
+            fun = lambda t,y:function[idx]
+            result[idx] = dimension + time_step * (fun(time,dimension))
 
         return result
