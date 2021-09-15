@@ -1,4 +1,4 @@
 # SimpleSim
 A simple N-body gravity simulator. 
 
-Currently, there's nothing here.
+As of right know, just a simple, barebones example is included in the main function, featuring 3 "planets".

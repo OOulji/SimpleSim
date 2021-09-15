@@ -2,19 +2,21 @@ from celestial_objects import CelestialObject
 from simulation import Simulation
 from universe import Universe
 from dependencies import NumericalIntegration
-import matplotlib.pyplot as plt
+from utils import SimulationUtils as su
+
 
 
 def main():
 
-    univ = Universe(0.005,0.01)
-    planet_A = CelestialObject("name1",10.0,[0.0,0.0],[0.0,0.0],[0.0,0.0])
-    planet_B = CelestialObject("name2",100.0,[0.0,0.0],[0.0,0.1],[100.0,0.0])
+    univ = Universe(0.01,1)
+    planet_A = CelestialObject("name1",1000,[0.0,0.0],[0.0,0.0],[0.0,0.0])
+    planet_B = CelestialObject("name2",0.000001,[0.0,0.0],[0.0,0.3],[50.0,0.0])
+    planet_C = CelestialObject("name3",0.000001,[0.0,0.0],[0.0,0.05],[200.0,0.0])
 
-    sim = Simulation(univ,[planet_A,planet_B],NumericalIntegration.EulerIntegrator,300.0)
+    sim = Simulation(univ,[planet_A,planet_B,planet_C],NumericalIntegration.EulerIntegrator,7*3600.0)
 
     t = sim.run()
-    print(t)
+    su.trayectories_plot(t)
 
 
 if __name__ == "__main__":

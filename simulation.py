@@ -4,7 +4,7 @@ from universe import Universe
 from celestial_objects import CelestialObject
 from dependencies import NumericalIntegration
 import copy
-from utils import SimulationUtils
+from utils import SimulationUtils as su
 
 
 class Simulation:
@@ -22,10 +22,9 @@ class Simulation:
 
     def run(self) -> np.array:
 
-        utils = SimulationUtils()
         new_state = copy.deepcopy(self._celestial_bodies)
         sim_time = 0.0
-        trajectories = [utils.get_trayectory(self._celestial_bodies)]
+        trajectories = [su.get_trayectory(self._celestial_bodies)]
 
         while sim_time < self._time_limit:
 
@@ -34,11 +33,11 @@ class Simulation:
                 for cb2 in self._celestial_bodies:
                     if cb1 is not cb2:
 
-                        dist = utils.calculate_distance(bodies=[cb1, cb2])
+                        dist = su.calculate_distance(bodies=[cb1, cb2])
                         acceleration += (
                             (
                                 (self._universe.grav_constant)
-                                * (cb1.get_mass() * cb2.get_mass())
+                                * (cb2.get_mass())
                             )
                             / (dist ** 3)
                         ) * (cb2.get_position() - cb1.get_position())
@@ -52,7 +51,7 @@ class Simulation:
                     self._universe.time_step, sim_time, cb1.get_position(), velocity
                 )
                 new_state[i].update_position(position)
-            new_points = utils.get_trayectory(new_state)
+            new_points = su.get_trayectory(new_state)
             new_points = np.array(new_points)
             trajectories = np.array(trajectories)
             trajectories = np.append(trajectories, [new_points], axis=0)
