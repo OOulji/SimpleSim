@@ -51,14 +51,11 @@ class Simulation:
                     self._universe.time_step, sim_time, cb1.get_position(), velocity
                 )
                 new_state[i].update_position(position)
-            new_points = su.get_trayectory(new_state)
-            new_points = np.array(new_points)
-            trajectories = np.array(trajectories)
-            trajectories = np.append(trajectories, [new_points], axis=0)
+                
             self._celestial_bodies = copy.deepcopy(new_state)
             sim_time += self._universe.time_step
-
-        return trajectories
+        final_state = self._celestial_bodies
+        return final_state
 
     def create_planet(self, new_planet: CelestialObject) -> CelestialObject:
         self._celestial_bodies.append(new_planet)

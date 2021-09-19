@@ -13,7 +13,7 @@ def main():
     planet_B = CelestialObject("name2",0.000001,[0.0,0.0],[0.0,0.3],[50.0,0.0])
     planet_C = CelestialObject("name3",0.000001,[0.0,0.0],[0.0,0.05],[200.0,0.0])
 
-    sim = Simulation(univ,[planet_A,planet_B,planet_C],NumericalIntegration.EulerIntegrator,7*3600.0)
+    sim = Simulation(univ,[planet_A,planet_B,planet_C],NumericalIntegration.EulerIntegrator,500.0)
 
     t = sim.run()
     su.trayectories_plot(t)

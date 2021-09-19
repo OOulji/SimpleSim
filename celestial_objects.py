@@ -1,4 +1,5 @@
 import numpy as np
+from typing import List
 
 
 class CelestialObject:
@@ -18,6 +19,7 @@ class CelestialObject:
         self._velocity = np.array(initial_velocity)
         self._acceleration = np.array(initial_acceleration)
         self._name = name
+        self._trayectory = [list(self._position)]
     
     def get_mass(self) -> float:
         return self._mass
@@ -28,9 +30,12 @@ class CelestialObject:
         return self._velocity
     def get_acceleration(self) -> np.array:
         return self._acceleration
+    def get_trayectory(self) -> List:
+        return self._trayectory
     
     def update_position(self, new_position) -> None:
         self._position = np.array(new_position)
+        self._trayectory.append(list(new_position))
     def update_velocity(self, new_velocity) -> None:
         self._velocity = np.array(new_velocity)
     def update_acceleration(self, new_acceleration) -> None:

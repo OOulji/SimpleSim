@@ -17,14 +17,18 @@ class SimulationUtils():
         b = np.array(bodies[1].get_position())
         dist = np.linalg.norm(a - b)
         return dist
-    
+
     @staticmethod
-    def trayectories_plot(trajectories):
-        num_planets = int(trajectories.shape[1]/2)
-        idx = 0
-        for i in range(num_planets):
-                plt.plot(trajectories[:,idx],trajectories[:,idx+1])
-                idx += 2
+    def trayectories_plot(final_state):
+
+        for body in final_state:
+            body_x = []
+            body_y = []
+            trayectory =  body.get_trayectory()
+            for coordinate_point in trayectory:
+                body_x.append(coordinate_point[0])
+                body_y.append(coordinate_point[1])
+            plt.plot(body_x,body_y)
 
         plt.show()
 
