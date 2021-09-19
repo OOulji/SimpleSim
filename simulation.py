@@ -24,7 +24,6 @@ class Simulation:
 
         new_state = copy.deepcopy(self._celestial_bodies)
         sim_time = 0.0
-        trajectories = [su.get_trayectory(self._celestial_bodies)]
 
         while sim_time < self._time_limit:
 
@@ -51,7 +50,7 @@ class Simulation:
                     self._universe.time_step, sim_time, cb1.get_position(), velocity
                 )
                 new_state[i].update_position(position)
-                
+
             self._celestial_bodies = copy.deepcopy(new_state)
             sim_time += self._universe.time_step
         final_state = self._celestial_bodies
