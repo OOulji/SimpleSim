@@ -5,7 +5,7 @@ from dependencies import NumericalIntegration
 from utils import SimulationUtils as su
 
 
-
+# TODO: Moving sim to pygame or other more visual framework than the current static implementation.
 def main():
 
     univ = Universe(0.01,1)
