@@ -5,7 +5,7 @@ from dataclasses import dataclass
 @dataclass
 class Universe():
 
-    grav_constant:float
-    time_step:float
+    grav_constant:float #Gravitational constant
+    time_step:float #Time delta
 
     
